@@ -13,6 +13,7 @@ namespace :db do
                    email: email,
                    password: password,
                    password_confirmation: password)
+      admin.toggle!(:admin)
     end
   end
 end
