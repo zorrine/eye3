@@ -14,6 +14,9 @@ require 'spec_helper'
 
 describe User do
 
+  it { should respond_to(:microposts) }
+  it { should respond_to(:feed) }
+
     before do
     @user = User.new(name: "Example User", email: "user@example.com", 
                      password: "foobar", password_confirmation: "foobar")
@@ -152,6 +155,17 @@ end
       end
     end
 
+    describe "status" do
+      let(:unfollowed_post) do
+        FactoryGirl.create(:micropost, user: FactoryGirl.create(:user))
+      end
+
+      its(:feed) { should include(newer_micropost) }
+      its(:feed) { should include(older_micropost) }
+      its(:feed) { should_not include(unfollowed_post) }
+    end
+    
+    
     
   end
   
