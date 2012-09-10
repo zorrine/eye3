@@ -19,6 +19,9 @@ describe "User pages" do
       it { should have_content(user.microposts.count) }
     end
  
+  
+ 
+ 
   end
   
   
